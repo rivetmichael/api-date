@@ -1,0 +1,3 @@
+api:
+    path: /getDate
+    controller: App\Controller\ApiController::getDateAction
