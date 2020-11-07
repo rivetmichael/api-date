@@ -10,7 +10,8 @@ RUN composer install --no-dev --no-autoloader --no-scripts
 
 COPY . /var/www/html
 
-RUN composer dumpautoload -o -a
+RUN composer dumpautoload -o -a && \
+    composer dump-env prod
 
 FROM php:7.4-apache as release
 
