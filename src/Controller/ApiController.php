@@ -2,14 +2,23 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 
 class ApiController {
 
-    public function getDateAction(Request $request)
+    private $defaultTimezone;
+
+    public function __construct(string $defaultTimezone)
     {
-        return new Response('coucou');
+        $this->defaultTimezone = $defaultTimezone;
+    }
+
+    public function getDateAction()
+    {
+        return new Response(
+            Carbon::now($this->defaultTimezone)->toDateTimeString()
+        );
     }
 
 }
